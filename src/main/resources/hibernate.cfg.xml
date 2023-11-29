@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Base properties -->
+        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@db.ig.he-arc.ch:1521:ens</property>
+        <property name="connection.username">nemo_vollert</property>
+        <property name="connection.password">nemo_vollert</property>
+        <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+        <property name="show_sql">true</property>
+
+
+
+
+        <!-- Mapping des classes -->
+<!--        <mapping class="ch.hearc.ig.guideresto.business.City"/>-->
+    </session-factory>
+</hibernate-configuration>
