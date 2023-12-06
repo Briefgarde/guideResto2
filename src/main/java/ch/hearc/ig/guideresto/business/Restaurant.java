@@ -20,7 +20,7 @@ public class Restaurant {
     private String description;
     @Column(name = "SITE_WEB", nullable = false)
     private String website;
-    @Transient
+    @OneToMany(mappedBy="restaurant")
     private Set<Evaluation> evaluations;
     @Embedded
     private Localisation address;

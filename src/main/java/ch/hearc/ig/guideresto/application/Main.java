@@ -1,11 +1,14 @@
 package ch.hearc.ig.guideresto.application;
 
 import ch.hearc.ig.guideresto.business.City;
+import ch.hearc.ig.guideresto.business.Evaluation;
 import ch.hearc.ig.guideresto.business.Restaurant;
 import ch.hearc.ig.guideresto.persistence.hibernate.JpaUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.List;
+import java.util.Set;
 
 public class Main {
 
@@ -14,17 +17,16 @@ public class Main {
 //    var fakeItems = new FakeItems();
 //    var printStream = System.out;
 //    var cli = new CLI(scanner, printStream, fakeItems);
-//
 //    cli.start();
+
+    // BEFORE LAUNCHING THIS PROGRAM !
+    // IT uses a NEW SCHEMA for the DB !
+    // Please run the CREATE_TABLE and INSERT_DATA sql script to make it work !
     EntityManager em = JpaUtils.getEntityManager();
     EntityTransaction transaction = em.getTransaction();
     transaction.begin();
     Restaurant restaurant = em.find(Restaurant.class, 1);
-    Restaurant restaurant1 = em.find(Restaurant.class, 3);
-    // why does it loads the Restaurant eagerly in City ? I've only loaded two restaurant here,
-    // but if you go to their city (they have the same city), it alredy has all three loaded (all of them currently)
-
-
+    List<Restaurant> restaurantList = em.createQuery("SELECT r FROM Restaurant r", Restaurant.class).getResultList();
 
 
     System.out.println("Whatever");
