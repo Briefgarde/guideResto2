@@ -1,6 +1,7 @@
 package ch.hearc.ig.guideresto.application;
 
 import ch.hearc.ig.guideresto.business.City;
+import ch.hearc.ig.guideresto.business.CompleteEvaluation;
 import ch.hearc.ig.guideresto.business.Evaluation;
 import ch.hearc.ig.guideresto.business.Restaurant;
 import ch.hearc.ig.guideresto.persistence.hibernate.JpaUtils;
@@ -27,6 +28,7 @@ public class Main {
     transaction.begin();
     Restaurant restaurant = em.find(Restaurant.class, 1);
     List<Restaurant> restaurantList = em.createQuery("SELECT r FROM Restaurant r", Restaurant.class).getResultList();
+
 
 
     System.out.println("Whatever");

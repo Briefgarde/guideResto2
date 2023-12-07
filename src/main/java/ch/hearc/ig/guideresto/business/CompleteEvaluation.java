@@ -15,7 +15,7 @@ public class CompleteEvaluation extends Evaluation {
   private String comment;
   @Column(name = "username")
   private String username;
-  @Transient
+  @OneToMany(mappedBy = "evaluation")
   private Set<Grade> grades;
 
   public CompleteEvaluation(Integer id, LocalDate visitDate, Restaurant restaurant, String comment,
