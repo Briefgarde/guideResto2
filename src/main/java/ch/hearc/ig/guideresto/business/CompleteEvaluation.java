@@ -10,12 +10,11 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "fk_eval")
 @Table(name = "complete_eval")
 public class CompleteEvaluation extends Evaluation {
-
   @Column(name = "commentaire")
   private String comment;
   @Column(name = "username")
   private String username;
-  @OneToMany(mappedBy = "evaluation")
+  @OneToMany(mappedBy = "evaluation", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private Set<Grade> grades;
 
   public CompleteEvaluation(Integer id, LocalDate visitDate, Restaurant restaurant, String comment,

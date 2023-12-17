@@ -32,6 +32,7 @@ public class City {
         City retour = new City();
         retour.setZipCode(zipCode);
         retour.setCityName(name);
+        retour.setRestaurants(new HashSet<>());
         return retour;
     }
 

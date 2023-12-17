@@ -20,7 +20,7 @@ public class Restaurant {
     private String description;
     @Column(name = "SITE_WEB", nullable = false)
     private String website;
-    @OneToMany(mappedBy="restaurant")
+    @OneToMany(mappedBy="restaurant", cascade = CascadeType.ALL)
     private Set<Evaluation> evaluations;
     @Embedded
     private Localisation address;
@@ -51,9 +51,12 @@ public class Restaurant {
         restaurant.setName(name);
         restaurant.setDescription(description);
         restaurant.setWebsite(website);
-        restaurant.getAddress().setStreet(street);
-        restaurant.getAddress().setCity(city);
+        Localisation localisation = new Localisation();
+        localisation.setStreet(street);
+        localisation.setCity(city);
+        restaurant.setAddress(localisation);
         restaurant.setType(type);
+        restaurant.setEvaluations(new HashSet<>());
         return restaurant;
     }
 

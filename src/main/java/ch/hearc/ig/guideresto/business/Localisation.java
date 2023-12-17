@@ -7,7 +7,7 @@ public class Localisation {
 
     @Column(name = "ADRESSE", nullable = false)
     private String street;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "FK_VILL", nullable = false)
     private City city;
 

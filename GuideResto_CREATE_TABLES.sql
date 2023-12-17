@@ -5,6 +5,7 @@ DROP SEQUENCE SEQ_EVAL;
 DROP SEQUENCE SEQ_NOTES;
 DROP SEQUENCE SEQ_CRITERES_EVALUATION;
 
+
 DROP TABLE RESTAURANTS CASCADE CONSTRAINTS;
 DROP TABLE TYPES_GASTRONOMIQUES CASCADE CONSTRAINTS;
 DROP TABLE VILLES CASCADE CONSTRAINTS;
@@ -24,7 +25,7 @@ CREATE TABLE CRITERES_EVALUATION (numero number(10) NOT NULL, nom varchar2(100) 
 ---------------------NEW STUFF--------------------------
 CREATE TABLE EVALUATIONS (numero number(10) not null, fk_rest number(10) not null, date_eval DATE, primary key(numero));
 CREATE TABLE BASICEVAL (numero number(10) not null, fk_eval number(10) not null, isLiked CHAR(1) not null, address_ip varchar2(100) not null, primary key (numero));
-CREATE TABLE COMPLETE_EVAL (numero number(10) not null, fk_eval number(10) not null, commentaire clob not null, date_eval Date not null, username varchar2(100) not null, primary key (numero));
+CREATE TABLE COMPLETE_EVAL (fk_eval number(10) not null, commentaire clob not null, username varchar2(100) not null, primary key (fk_eval));
 -----------------------------------------------
 
 
@@ -36,7 +37,7 @@ ALTER TABLE EVALUATIONS ADD CONSTRAINT  FK_EVAL_REST foreign key (fk_rest) REFER
 ALTER TABLE BASICEVAL ADD CONSTRAINT FK_BASE_EVAL_EVAL foreign key (fk_eval) references EVALUATIONS (numero);
 ALTER TABLE COMPLETE_EVAL ADD CONSTRAINT FK_COMP_EVAL_EVAL foreign key (fk_eval) references EVALUATIONS (numero);
 --
-ALTER TABLE NOTES ADD CONSTRAINT FK_NOTE_COM_EVAL FOREIGN KEY (fk_eval) REFERENCES COMPLETE_EVAL (numero);
+ALTER TABLE NOTES ADD CONSTRAINT FK_NOTE_COM_EVAL FOREIGN KEY (fk_eval) REFERENCES COMPLETE_EVAL (fk_eval);
 -----------------------------------------------
 
 CREATE SEQUENCE SEQ_RESTAURANTS;
@@ -45,6 +46,7 @@ CREATE SEQUENCE SEQ_VILLES;
 CREATE SEQUENCE SEQ_EVAL;
 CREATE SEQUENCE SEQ_NOTES;
 CREATE SEQUENCE SEQ_CRITERES_EVALUATION;
+
 
 CREATE OR REPLACE TRIGGER TR_BIF_RESTAURANTS
 BEFORE INSERT ON RESTAURANTS
@@ -96,15 +98,15 @@ BEGIN
     END IF;
 END;
 /
-CREATE OR REPLACE TRIGGER TR_BIF_COMP_EVAL
-    BEFORE INSERT ON COMPLETE_EVAL
-    FOR EACH ROW
-BEGIN
-    IF :NEW.NUMERO IS NULL THEN
-        :NEW.NUMERO := SEQ_EVAL.NEXTVAL;
-    END IF;
-END;
-/
+-- CREATE OR REPLACE TRIGGER TR_BIF_COMP_EVAL
+--     BEFORE INSERT ON COMPLETE_EVAL
+--     FOR EACH ROW
+-- BEGIN
+--     IF :NEW.NUMERO IS NULL THEN
+--         :NEW.numero := SEQ_EVAL.NEXTVAL;
+--     END IF;
+-- END;
+-- /
 -------------------------------------------
 
 CREATE OR REPLACE TRIGGER TR_BIF_CRITERES_EVALUATION

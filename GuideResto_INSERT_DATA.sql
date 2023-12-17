@@ -16,7 +16,7 @@ INSERT INTO RESTAURANTS(nom, adresse, description, site_web, fk_type, fk_vill) V
 INSERT INTO RESTAURANTS(nom, adresse, description, site_web, fk_type, fk_vill) VALUES ('La Maison du Prussien', 'Rue des Tunnels 11', 'Restaurant gastronomique renommé de Neuchâtel', 'www.hotel-prussien.ch', 2, 1);
 COMMIT;
 
---TO DO : EVAL
+
 INSERT INTO EVALUATIONS (date_eval, fk_rest) VALUES (sysdate, 1);
 INSERT INTO EVALUATIONS (date_eval, fk_rest) VALUES (sysdate, 1);
 INSERT INTO EVALUATIONS (date_eval, fk_rest) VALUES (sysdate, 1);
@@ -24,7 +24,7 @@ INSERT INTO EVALUATIONS (date_eval, fk_rest) VALUES (sysdate, 1);
 INSERT INTO EVALUATIONS (date_eval, fk_rest) VALUES (sysdate, 1);
 INSERT INTO EVALUATIONS (date_eval, fk_rest) VALUES (sysdate, 1);
 COMMIT;
---TO DO : BASIC EVAL
+
 
 INSERT INTO BASICEVAL(fk_eval, isLiked, address_ip) VALUES (1, 'T', '1.2.3.4');
 INSERT INTO BASICEVAL(fk_eval, isLiked, address_ip) VALUES (2, 'T', '1.2.3.5');
@@ -32,22 +32,22 @@ INSERT INTO BASICEVAL(fk_eval, isLiked, address_ip) VALUES (3, 'T', '1.2.3.6');
 COMMIT;
 
 
---TO DO : CCOMPLETE EVAL
 
-INSERT INTO COMPLETE_EVAL(fk_eval, commentaire, date_eval, username) VALUES (4, 'FUCK THIS PROGRAM', sysdate, 'TI');
-INSERT INTO COMPLETE_EVAL(fk_eval, commentaire, date_eval, username) VALUES (5, 'FUCK2 THIS PROGRAM', sysdate, 'TITI');
-INSERT INTO COMPLETE_EVAL(fk_eval, commentaire, date_eval, username) VALUES (6, 'FUCK3 THIS PROGRAM', sysdate, 'TITITI');
+
+INSERT INTO COMPLETE_EVAL(fk_eval, commentaire, username) VALUES (4, 'YAY', 'TI');
+INSERT INTO COMPLETE_EVAL(fk_eval, commentaire, username) VALUES (5, 'YAY2', 'TITI');
+INSERT INTO COMPLETE_EVAL(fk_eval, commentaire, username) VALUES (6, 'YAY3', 'TITITI');
 COMMIT;
 
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 10, 1);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 10, 2);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 10, 3);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 11, 1);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 11, 2);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 11, 3);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 12, 1);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 12, 2);
-INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 12, 3);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 4, 1);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 4, 2);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 4, 3);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 5, 1);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 5, 2);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (4, 5, 3);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 6, 1);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 6, 2);
+INSERT INTO NOTES(note, fk_eval, fk_crit) VALUES (5, 6, 3);
 COMMIT;
 
 
