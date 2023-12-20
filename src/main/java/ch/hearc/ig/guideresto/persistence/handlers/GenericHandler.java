@@ -14,7 +14,7 @@ public abstract class GenericHandler<E> {
         this.entityClass = entityClass;
     }
 
-    /** Thank you mister GPT
+    /**
      * Updates the given entity in the database in a managed way using Java Persistence API (JPA).
      * The method starts a transaction, persists the entity changes, and commits the transaction.
      * If an exception occurs during the process, the transaction is rolled back to maintain database consistency.

@@ -12,13 +12,12 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
-    // BEFORE LAUNCHING THIS PROGRAM !
-    // IT uses a NEW SCHEMA for the DB !
-    // Please run the CREATE_TABLE and INSERT_DATA sql script first to make it work !
     var scanner = new Scanner(System.in);
     var fakeItems = new FakeItems();
     var printStream = System.out;
-    System.out.println("Choose your type : Base=1 or Updated=2 by my careful work (not)");
+    System.out.println("I have changed the structure of the DB.");
+    System.out.println("Please run the CREATE_TABLE and INSERT_DATA sql script first to make it work !");
+    System.out.println("Choose your type : Base=1 or Updated=2 by my careful work : ");
     //This is just a quick way for me to check how a functionalities work in the "correct" way, without rewriting the main
     String input = scanner.nextLine();
     if (input.equals("1")){
